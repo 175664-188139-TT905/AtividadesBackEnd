@@ -7,6 +7,17 @@ app.use(cors());
 
 app.listen(process.env.PORT || 3000);
 
+/* Para adicionar um registro de jogo, utilizar a seguinte sintaxe JSON no request do Thunder Client:
+
+{"game":{
+    "Nome": "XXXXXXXXXX",
+    "Genero": "XXXXXXXXX",
+    "Produtora": "XXXXXXXX"
+  }
+}
+
+*/
+
 gameslib = [{"Nome":"Fallout","Genero":"RPG","Produtora":"Bethesda"},
 {"Nome":"Minecraft","Genero":"Survival","Produtora":"Mojang"}];
 
