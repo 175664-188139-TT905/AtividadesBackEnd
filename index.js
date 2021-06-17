@@ -70,10 +70,10 @@ app.delete('/gameslib/:id',
 /* código para o banco de dados MongoDB */
 
 const mongodb = require('mongodb')
-const password = process.env.PASSWORD || "não acessou senha";
+const password = process.env.PASSWORD || "greeAT9V39BhbmQ";
 console.log(password);
 /*
-const connectionString = `mongodb+srv://admin:${password}@cluster0.fhdc2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const connectionString = `mongodb+srv://user0:<password>@cluster0.vat2u.mongodb.net/library?retryWrites=true&w=majority`;
 
 const options = { 
     useNewUrlParser: true, 
@@ -82,7 +82,7 @@ const options = {
 
 (async()=>{
     const client = await mongodb.MongoClient.connect(connectionString, options);
-    const db = client.db('myFirstDatabase');
+    const db = client.db('library');
     const mensagens = db.collection('mensagens');
     console.log(await mensagens.find({}).toArray());
 
@@ -141,7 +141,7 @@ app.put('/database/:id',
             {$set : mensagem}
         );
         
-        res.send("Mensagem atualizada com sucesso.")
+        res.send("Jogo atualizado com sucesso.")
     }
 )
 
@@ -151,7 +151,7 @@ app.delete('/database/:id',
         
         await mensagens.deleteOne({_id : mongodb.ObjectID(id)});
 
-        res.send("Mensagem removida com sucesso");
+        res.send("Jogo removido com sucesso");
     }
 );
 
