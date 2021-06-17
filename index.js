@@ -88,7 +88,6 @@ const options = {
 
     app.get('/database',
         async function(req, res){
-        // res.send(mensagens);
         res.send(await gameslib.find({}).toArray());
     }
 );
