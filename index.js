@@ -18,7 +18,7 @@ app.listen(process.env.PORT || 3000);
 
 */
 
-gameslib = [{"Nome":"Fallout","Genero":"RPG","Produtora":"Bethesda"},
+/*gameslib = [{"Nome":"Fallout","Genero":"RPG","Produtora":"Bethesda"},
 {"Nome":"Minecraft","Genero":"Survival","Produtora":"Mojang"}];
 
 app.get('/gameslib',
@@ -65,7 +65,7 @@ app.delete('/gameslib/:id',
 
         res.send("Jogo removido.");
     }
-);
+); */
 
 /* código para o banco de dados MongoDB */
 
