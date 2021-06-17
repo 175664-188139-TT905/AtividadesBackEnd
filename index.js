@@ -70,10 +70,10 @@ app.delete('/gameslib/:id',
 /* código para o banco de dados MongoDB */
 
 const mongodb = require('mongodb')
-const password = process.env.PASSWORD || "greeAT9V39BhbmQ";
+const password = "greeAT9V39BhbmQ";
 console.log(password);
 
-const connectionString = "mongodb+srv://user0:${password}@cluster0.vat2u.mongodb.net/library?retryWrites=true&w=majority";
+const connectionString = "mongodb+srv://user0:$password@cluster0.vat2u.mongodb.net/library?retryWrites=true&w=majority";
 
 const options = { 
     useNewUrlParser: true, 
