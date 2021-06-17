@@ -7,18 +7,18 @@ app.use(cors());
 
 app.listen(process.env.PORT || 3000);
 
-/* Para adicionar um registro de jogo, utilizar a seguinte sintaxe JSON no request do Thunder Client:
+ /*Para adicionar um registro de jogo, utilizar a seguinte sintaxe JSON no request do Thunder Client:
 
 {"game":{
     "Nome": "XXXXXXXXXX",
     "Genero": "XXXXXXXXX",
     "Produtora": "XXXXXXXX"
   }
-}
+}*/
 
-*/
 
-/*gameslib = [{"Nome":"Fallout","Genero":"RPG","Produtora":"Bethesda"},
+
+gameslib = [{"Nome":"Fallout","Genero":"RPG","Produtora":"Bethesda"},
 {"Nome":"Minecraft","Genero":"Survival","Produtora":"Mojang"}];
 
 app.get('/gameslib',
@@ -65,7 +65,7 @@ app.delete('/gameslib/:id',
 
         res.send("Jogo removido.");
     }
-); */
+); 
 
 /* código para o banco de dados MongoDB */
 
@@ -86,14 +86,14 @@ const options = {
     const gameslib = db.collection('gameslib');
     console.log(await gameslib.find({}).toArray());
 
-    app.get('/gameslib',
+    app.get('/database',
         async function(req, res){
         // res.send(mensagens);
         res.send(await gameslib.find({}).toArray());
     }
 );
 
-app.get('/gameslib/:id',
+app.get('/database/:id',
     async function(req, res){
         const id = req.params.id;
         const game = await gameslib.findOne(
@@ -108,7 +108,7 @@ app.get('/gameslib/:id',
     }
 );
 
-app.post('/gameslib', 
+app.post('/database', 
     async (req, res) => {
         console.log(req.body);
         const game = req.body;
@@ -120,7 +120,7 @@ app.post('/gameslib',
     }
 );
 
-app.put('/gameslib/:id',
+app.put('/database/:id',
     async (req, res) => {
         const id = req.params.id;
         const game = req.body;
@@ -145,7 +145,7 @@ app.put('/gameslib/:id',
     }
 )
 
-app.delete('/gameslib/:id', 
+app.delete('/database/:id', 
     async (req, res) => {
         const id = req.params.id;
         
