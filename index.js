@@ -73,7 +73,7 @@ const mongodb = require('mongodb')
 const password = "vXesHN4by3QmCdbj";
 console.log(password);
 
-const connectionString = "mongodb+srv://user0:vXesHN4by3QmCdbj@cluster0.vat2u.mongodb.net/library?retryWrites=true&w=majority";
+const connectionString = "mongodb+srv://user0:${password}@cluster0.vat2u.mongodb.net/library?retryWrites=true&w=majority";
 
 const options = { 
     useNewUrlParser: true, 
