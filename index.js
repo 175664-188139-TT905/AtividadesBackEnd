@@ -86,14 +86,14 @@ const options = {
     const gameslib = db.collection('gameslib');
     console.log(await gameslib.find({}).toArray());
 
-    app.get('/database',
+    app.get('/gameslib',
         async function(req, res){
         // res.send(mensagens);
         res.send(await gameslib.find({}).toArray());
     }
 );
 
-app.get('/database/:id',
+app.get('/gameslib/:id',
     async function(req, res){
         const id = req.params.id;
         const game = await gameslib.findOne(
@@ -108,7 +108,7 @@ app.get('/database/:id',
     }
 );
 
-app.post('/database', 
+app.post('/gameslib', 
     async (req, res) => {
         console.log(req.body);
         const game = req.body;
@@ -120,7 +120,7 @@ app.post('/database',
     }
 );
 
-app.put('/database/:id',
+app.put('/gameslib/:id',
     async (req, res) => {
         const id = req.params.id;
         const game = req.body;
@@ -145,7 +145,7 @@ app.put('/database/:id',
     }
 )
 
-app.delete('/database/:id', 
+app.delete('/gameslib/:id', 
     async (req, res) => {
         const id = req.params.id;
         
