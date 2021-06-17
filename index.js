@@ -116,7 +116,7 @@ app.post('/database',
         delete game["_id"];
 
         gameslib.insertOne(game);        
-        res.send("Adicionar um game");
+        res.send("Jogo adicionado com sucesso");
     }
 );
 
@@ -132,7 +132,7 @@ app.put('/database/:id',
         const num_game = await gameslib.countDocuments({_id : mongodb.ObjectID(id)});
 
         if (num_game !== 1) {
-            res.send('Ocorreu um erro por conta do número de mensagens');
+            res.send('Ocorreu um erro');
             return;
         }
 
@@ -141,7 +141,7 @@ app.put('/database/:id',
             {$set : game}
         );
         
-        res.send("Jogo atualizado com sucesso.")
+        res.send("Jogo atualizado com sucesso")
     }
 )
 
