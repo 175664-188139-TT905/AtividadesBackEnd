@@ -72,7 +72,7 @@ app.delete('/gameslib/:id',
 const mongodb = require('mongodb')
 const password = process.env.PASSWORD || "greeAT9V39BhbmQ";
 console.log(password);
-/*
+
 const connectionString = `mongodb+srv://user0:<password>@cluster0.vat2u.mongodb.net/library?retryWrites=true&w=majority`;
 
 const options = { 
@@ -83,27 +83,27 @@ const options = {
 (async()=>{
     const client = await mongodb.MongoClient.connect(connectionString, options);
     const db = client.db('library');
-    const mensagens = db.collection('mensagens');
-    console.log(await mensagens.find({}).toArray());
+    const gameslib = db.collection('gameslib');
+    console.log(await gameslib.find({}).toArray());
 
     app.get('/database',
         async function(req, res){
         // res.send(mensagens);
-        res.send(await mensagens.find({}).toArray());
+        res.send(await gameslib.find({}).toArray());
     }
 );
 
 app.get('/database/:id',
     async function(req, res){
         const id = req.params.id;
-        const mensagem = await mensagens.findOne(
+        const game = await gameslib.findOne(
             {_id : mongodb.ObjectID(id)}
         );
-        console.log(mensagem);
-        if (!mensagem){
-            res.send("Mensagem não encontrada");
+        console.log(game);
+        if (!game){
+            res.send("Jogo não encontrado");
         } else {
-            res.send(mensagem);
+            res.send(game);
         }
     }
 );
@@ -111,34 +111,34 @@ app.get('/database/:id',
 app.post('/database', 
     async (req, res) => {
         console.log(req.body);
-        const mensagem = req.body;
+        const game = req.body;
         
-        delete mensagem["_id"];
+        delete game["_id"];
 
-        mensagens.insertOne(mensagem);        
-        res.send("criar uma mensagem.");
+        gameslib.insertOne(game);        
+        res.send("Adicionar um game");
     }
 );
 
 app.put('/database/:id',
     async (req, res) => {
         const id = req.params.id;
-        const mensagem = req.body;
+        const game = req.body;
 
-        console.log(mensagem);
+        console.log(game);
 
-        delete mensagem["_id"];
+        delete game["_id"];
 
-        const num_mensagens = await mensagens.countDocuments({_id : mongodb.ObjectID(id)});
+        const num_game = await gameslib.countDocuments({_id : mongodb.ObjectID(id)});
 
-        if (num_mensagens !== 1) {
+        if (num_game !== 1) {
             res.send('Ocorreu um erro por conta do número de mensagens');
             return;
         }
 
-        await mensagens.updateOne(
+        await gameslib.updateOne(
             {_id : mongodb.ObjectID(id)},
-            {$set : mensagem}
+            {$set : game}
         );
         
         res.send("Jogo atualizado com sucesso.")
@@ -149,11 +149,10 @@ app.delete('/database/:id',
     async (req, res) => {
         const id = req.params.id;
         
-        await mensagens.deleteOne({_id : mongodb.ObjectID(id)});
+        await gameslib.deleteOne({_id : mongodb.ObjectID(id)});
 
         res.send("Jogo removido com sucesso");
     }
 );
 
-})(); */
-
+})(); 
